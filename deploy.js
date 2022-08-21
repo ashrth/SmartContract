@@ -27,6 +27,7 @@ async function main() {
   console.log("Deploying, please wait...");
 
   const contract = await contractFactory.deploy();
+<<<<<<< HEAD
   await contract.deployTransaction.wait(1);
   // console.log(`Contract deployed to ${contract.address}`);
   const currentFavoriteNumber = await contract.retrieve();
@@ -35,6 +36,19 @@ async function main() {
   const transactionReceipt = await transactionResponse.wait(1);
   const updatedFavoriteNumber = await contract.retrieve();
   console.log(`Updated Favorite Number: ${updatedFavoriteNumber}`);
+=======
+  const deploymentReceipt = await contract.deployTransaction.wait(1);
+  console.log(`Contract deployed to ${contract.address}`);
+  
+  const favouriteNumber = await contract.retrieve()
+  console.log(`favouriteNumber: ${favouriteNumber.toString()}`)
+
+  const storeFavouriteNumber = await contract.store("10")
+  await storeFavouriteNumber.wait(1)
+
+  const updatedFavouriteNumber = await contract.retrieve()
+  console.log(`updatedFavouriteNumber: ${updatedFavouriteNumber.toString()}`)
+>>>>>>> a899f4d8faad5689b432b3d93a378153eefeaffd
 }
 
 main()
