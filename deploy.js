@@ -28,6 +28,15 @@ async function main() {
   const contract = await contractFactory.deploy();
   const deploymentReceipt = await contract.deployTransaction.wait(1);
   console.log(`Contract deployed to ${contract.address}`);
+  
+  const favouriteNumber = await contract.retrieve()
+  console.log(`favouriteNumber: ${favouriteNumber.toString()}`)
+
+  const storeFavouriteNumber = await contract.store("10")
+  await storeFavouriteNumber.wait(1)
+
+  const updatedFavouriteNumber = await contract.retrieve()
+  console.log(`updatedFavouriteNumber: ${updatedFavouriteNumber.toString()}`)
 }
 
 main()
