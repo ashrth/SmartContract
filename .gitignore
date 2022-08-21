@@ -1,6 +1,4 @@
 node_modules
 .env
-<<<<<<< HEAD
 .encryptedKey.json
-=======
->>>>>>> a899f4d8faad5689b432b3d93a378153eefeaffd
+
